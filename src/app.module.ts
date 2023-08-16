@@ -1,14 +1,18 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config/dist';
-import { ShopifyService } from './shopify.service';
+import { authCallback, shopify } from './shopify';
 
 @Module({
   imports: [ConfigModule.forRoot({
     envFilePath: '.env'
   })],
   controllers: [AppController],
-  providers: [AppService, ShopifyService],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(authCallback).forRoutes(shopify.config.auth.callbackPath)
+  }
+}

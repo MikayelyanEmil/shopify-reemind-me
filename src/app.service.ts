@@ -6,20 +6,9 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AppService {
   shopify: ShopifyRestResources;
-  constructor(private configService: ConfigService) {
-    this.shopify = shopifyApi({
-      apiKey: this.configService.get('SHOPIFY_API_KEY'),
-      apiSecretKey: this.configService.get('SHOPIFY_API_SECRET'),
-      hostName: this.configService.get('HOSTNAME'),
-      apiVersion: LATEST_API_VERSION,
-      scopes: ['read_products'],
-      isEmbeddedApp: false,
-      hostScheme: 'http'
-    });
-  }
+  constructor(private configService: ConfigService) {}
 
   getHello(): string {  
-    return this.configService.get('SHOPIFY_API_KEY');
-
+    return '<h1 style="color: navy; text-align: center;">Main Page<h1>'
   }
 }

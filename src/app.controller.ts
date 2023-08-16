@@ -1,42 +1,25 @@
-import { Controller, Get, Req, Res } from '@nestjs/common';
+import { Controller, Get, Next, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Request, Response } from 'express';
-import { ShopifyService } from './shopify.service';
+import { NextFunction, Request, Response } from 'express';
+import { shopify, authBegin, authCallback } from './shopify';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
-    private readonly shopifyService: ShopifyService
+    private readonly appService: AppService
   ) { }
 
-  @Get('/auth')
-  async beginAuth(@Req() req, @Res() res: Response) {
-    await this.shopifyService.shopify.auth.begin({
-      shop: this.shopifyService.shopify.utils.sanitizeShop('sealion4.myshopify.com', true),
-      callbackPath: '/auth/callback',
-      isOnline: false,
-      rawRequest: req,
-      rawResponse: res,
-    });
+  @Get(shopify.config.auth.path)
+  auth(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
+    authBegin(req, res, next);
   }
 
-  @Get('/auth/callback')
-  async callback(@Req() req, @Res() res: Response) {
-    try {
-      const callback = await this.shopifyService.shopify.auth.callback({
-        rawRequest: req,
-        rawResponse: res,
-      });
-    } catch (error) {
-      console.log(error.message);
-
-    }
-
-    res.send('<h1>Callback</h1>')
+  @Get(shopify.config.auth.callbackPath)
+  callback(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
+    shopify.redirectToShopifyOrAppRoot()(req, res, next);
   }
 
-  @Get()
+  @Get('api')
   getHello(): string {
     return this.appService.getHello();
   }
