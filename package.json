@@ -1,0 +1,17 @@
+{
+  "name": "reemind-me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "generate": "shopify app generate"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@shopify/app": "^3.48.4",
+    "@shopify/cli": "^3.48.4"
+  }
+}
