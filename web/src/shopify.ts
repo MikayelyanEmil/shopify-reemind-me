@@ -12,7 +12,7 @@ export const shopify = shopifyApp({
         apiSecretKey: process.env.SHOPIFY_API_SECRET,
         scopes: ['read_products'],
         hostScheme: 'https',
-        // hostName: process.env.HOSTNAME,
+        // hostName: process.env.HOSTNAME, 
     },
     auth: { 
         path: '/api/auth',

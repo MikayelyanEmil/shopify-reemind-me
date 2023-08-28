@@ -1,8 +1,16 @@
-# React + Vite
+# Shopify React Frontend App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
-Currently, two official plugins are available:
+This repository is the frontend for Shopify’s app starter templates. **You probably don’t want to use this repository directly**, but rather through one of the templates and the [Shopify CLI](https://github.com/Shopify/shopify-cli).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Developer resources
+
+- [Introduction to Shopify apps](https://shopify.dev/apps/getting-started)
+  - [App authentication](https://shopify.dev/apps/auth)
+- [Shopify CLI command reference](https://shopify.dev/apps/tools/cli/app)
+- [Shopify API Library documentation](https://github.com/Shopify/shopify-node-api/tree/main/docs)
+
+## License
+
+This repository is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
