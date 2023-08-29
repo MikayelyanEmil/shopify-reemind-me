@@ -1,14 +1,14 @@
-import { Controller, Get, Next, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Next, Post, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { NextFunction, Request, Response } from 'express';
 import { shopify, authBegin, authCallback } from './shopify';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { PrismaService } from './prisma.service';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService
+    private readonly appService: AppService,
+    private prisma: PrismaService
   ) { }
 
   @Get(shopify.config.auth.path)
@@ -29,9 +29,11 @@ export class AppController {
   //   .send(readFileSync(join(__dirname, '..', 'frontend/dist', "index.html")));
   // }
 
-  @Get('test')
-  async test(@Res() res: Response) {
-    const answer = await this.appService.test(res);
-    res.send(answer);
+  @Post('api/customize')
+  async test(@Body() data) { 
+    // data.number = String(data.number);
+    await this.appService.customize(data);
+    // console.log(number.number, typeof number.number);
+    return "success"
   }
 }

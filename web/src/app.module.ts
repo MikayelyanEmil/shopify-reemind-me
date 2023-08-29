@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config/dist';
 import { authCallback, installedOnShop, shopify } from './shopify';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { PrismaService } from './prisma.service';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { join } from 'path';
     })
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
