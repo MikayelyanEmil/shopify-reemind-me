@@ -2,7 +2,9 @@ import {
   LegacyCard,
   ColorPicker,
   RangeSlider,
+  Grid,
   Button,
+  TextField,
   Card,
   Page,
   Layout,
@@ -22,8 +24,15 @@ import { ProductsCard } from "../components";
 
 export default function HomePage() {
   const { t } = useTranslation();
+  const [klaviyoApiKey, setKlaviyoApiKey] = useState('');
   const [rangeValue, setRangeValue] = useState(32);
   const fetch = useAuthenticatedFetch();
+
+
+  const handleChange = useCallback(
+    (newValue) => setKlaviyoApiKey(newValue),
+    [],
+  );
 
   // const [color, setColor] = useState({
   //   hue: 120,
@@ -31,6 +40,12 @@ export default function HomePage() {
   //   saturation: 1,
   // });
 
+  const saveApiKey = useCallback(
+    () => {
+      fetch()
+    },
+    []
+  )
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
@@ -44,7 +59,7 @@ export default function HomePage() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({color: `${rangeValue}`})
+        body: JSON.stringify({ color: `${rangeValue}` })
       });
 
       console.log(response.status);
@@ -69,10 +84,28 @@ export default function HomePage() {
           </Card>
         </Layout.Section>
         <Layout.Section>
-          {/* <ProductsCard /> */}
-          {/* {color} */}
+
         </Layout.Section>
       </Layout>
+      <Grid>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <Card title="Connect Klaviyo" sectioned>
+            <TextField
+              label="Klaviyo Api key"
+              value={klaviyoApiKey}
+              onChange={handleChange}
+              autoComplete="off"
+            />
+            <br />
+            <Button primary>Connect</Button>
+          </Card>
+        </Grid.Cell>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+          <Card title="Connect Mailchimp" sectioned>
+
+          </Card>
+        </Grid.Cell>
+      </Grid>
     </Page>
   );
 }

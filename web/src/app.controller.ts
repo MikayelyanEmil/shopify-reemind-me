@@ -3,6 +3,8 @@ import { AppService } from './app.service';
 import { NextFunction, Request, Response } from 'express';
 import { shopify, authBegin, authCallback } from './shopify';
 import { PrismaService } from './prisma.service';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 @Controller()
 export class AppController {
@@ -18,7 +20,8 @@ export class AppController {
 
   @Get(shopify.config.auth.callbackPath)
   callback(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
-    shopify.redirectToShopifyOrAppRoot()(req, res, next);
+    // console.log('ACTUAL HANDLER');
+    // res.sendStatus(200)
   }
 
   // @Get('')
@@ -26,7 +29,7 @@ export class AppController {
   //   return res
   //   .status(200)
   //   .set("Content-Type", "text/html")
-  //   .send(readFileSync(join(__dirname, '..', 'frontend/dist', "index.html")));
+  //   .send(readFileSync(join(__dirname, '..', 'frontend', "index.html")));
   // }
 
   @Post('api/customize')

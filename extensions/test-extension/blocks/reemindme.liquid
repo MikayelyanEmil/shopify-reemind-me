@@ -1,0 +1,26 @@
+<button is="reemindme-button">
+  Reemind Me!
+</button>
+
+<style>
+  button[is="reemindme-button"] {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 160px;
+    height: 80px;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Reemindme",
+    "target": "head",
+    "enabled_on": {
+      "templates": ["product"]
+    },
+    "stylesheet": "reemindme.css",
+    "javascript": "reemindme.js",
+    "settings": []
+  }
+{% endschema %}

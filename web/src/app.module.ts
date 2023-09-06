@@ -6,12 +6,13 @@ import { authCallback, installedOnShop, shopify } from './shopify';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { PrismaService } from './prisma.service';
+import { billingMiddleware } from './middleware/billingMiddleware';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({ 
       rootPath: join(__dirname, '..', 'frontend'),
-      exclude: ['/api/(.*)'],
+      // exclude: ['/api/(.*)'],
       // serveStaticOptions: { 
       //   index: false
       // }
@@ -25,7 +26,7 @@ import { PrismaService } from './prisma.service';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(authCallback).forRoutes(shopify.config.auth.callbackPath)
-    consumer.apply(installedOnShop).forRoutes('/*') 
+    consumer.apply(authCallback, billingMiddleware, shopify.redirectToShopifyOrAppRoot()).forRoutes(shopify.config.auth.callbackPath)
+    consumer.apply(installedOnShop).forRoutes('/') 
   }
 } 
