@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "reemind-me"
+client_id = "cb9aa9ff36945b19bcfe7fc2f66e4616"
+application_url = "https://notices-businesses-entertainment-extra.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://notices-businesses-entertainment-extra.trycloudflare.com/auth/callback",
+  "https://notices-businesses-entertainment-extra.trycloudflare.com/auth/shopify/callback",
+  "https://notices-businesses-entertainment-extra.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-07"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "sealion4.myshopify.com"
