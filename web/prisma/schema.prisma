@@ -23,6 +23,8 @@ model Session {
 }
 
 model CustomizationSettings {
-  id          Int      @default(autoincrement()) @id
-  color       String    
+  id          String    @id
+  buttonBorderRadius  String  @default("5px") 
+  buttonColor  String @default("navy")
+  formColor  String @default("blue")   
 }

@@ -1,0 +1,85 @@
+reminder-popup form {
+    width: 200px;
+    text-align: center;
+    border: solid 2px navy;
+    padding: 10px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 1000;
+}
+
+reminder-popup form input,
+reminder-popup form label {
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+/*  */
+
+/* .reminder-popup form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 1000;
+
+    font-family: sans-serif;
+    padding: 0px;
+    width: 200px;
+    text-align: center;
+    background: #ddd;
+    border: solid 3px navy;
+    border-radius: 5px;
+}
+
+.reminder-popup form input,
+.reminder-popup form label {
+    width: 90%;
+    margin: 10px 0;
+} */
+
+/* .reminder-popup form .form-top {
+    color: navy;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-weight: 950;
+    font-size: 20px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color: #bbb;
+}
+
+.reminder-popup form .submit-btn {
+    all: unset;
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 2px navy;
+    border-radius: 10px;
+} */
+
+
+
+/*  */
+button[is="reemindme-button"] {
+    all: unset;
+    font-family: sans-serif;
+    font-weight: 700;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 160px;
+    height: 80px;
+    padding: 2px;
+    border: 3px solid;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 9999;
+    background-color: white;
+}

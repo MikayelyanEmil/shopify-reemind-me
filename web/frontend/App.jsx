@@ -7,6 +7,7 @@ import {
   AppBridgeProvider,
   QueryProvider,
   PolarisProvider,
+  ReemindmeSettingsProvider
 } from "./components";
 
 export default function App() {
@@ -19,17 +20,19 @@ export default function App() {
     <PolarisProvider>
       <BrowserRouter>
         <AppBridgeProvider>
-          <QueryProvider>
-            <NavigationMenu
-              navigationLinks={[
-                {
-                  label: t("NavigationMenu.pageName"),
-                  destination: "/pagename",
-                },
-              ]}
-            />
-            <Routes pages={pages} />
-          </QueryProvider>
+          <ReemindmeSettingsProvider>
+            <QueryProvider>
+              <NavigationMenu
+                navigationLinks={[
+                  {
+                    label: t("NavigationMenu.pageName"),
+                    destination: "/pagename",
+                  },
+                ]}
+              />
+              <Routes pages={pages} />
+            </QueryProvider>
+          </ReemindmeSettingsProvider>
         </AppBridgeProvider>
       </BrowserRouter>
     </PolarisProvider>

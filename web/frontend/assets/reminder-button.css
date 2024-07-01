@@ -1,0 +1,13 @@
+button[is="reemindme-button"] {
+    all: unset;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: navy;
+    width: 160px;
+    height: 80px;
+    padding: 2px;
+    border: 3px solid navy;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+}

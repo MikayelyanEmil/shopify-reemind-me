@@ -1,0 +1,35 @@
+.reminder-form {
+    font-family: sans-serif;
+    padding: 0px;
+    width: 200px;
+    text-align: center;
+    background: #ddd;
+    border: solid 3px navy;
+    border-radius: 5px;
+}
+
+.reminder-form input,
+.reminder-form label {
+    width: 90%;
+    margin: 10px 0;
+}
+
+.reminder-form .form-top {
+    color: navy;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-weight: 950;
+    font-size: 20px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color: #bbb;
+}
+
+.reminder-form .submit-btn {
+    all: unset;
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: solid 2px navy;
+    border-radius: 10px;
+}

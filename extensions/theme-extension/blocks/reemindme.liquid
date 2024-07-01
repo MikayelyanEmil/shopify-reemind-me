@@ -1,0 +1,76 @@
+<button is="reemindme-button">
+  Reemind Me!
+
+  <template>
+    {% comment %} <form method="post">
+      <label for="datePicker">Select Date</label>
+      <input
+        type="date"
+        name="datePicker"
+        id="datePicker" />
+      <label for="email">Your email</label>
+      <input
+        type="email"
+        name="email"
+        id="customerEmail" />
+
+      <input
+        type="hidden"
+        name="productId"
+        id="productId"
+        value="{{ product.id }}" />
+
+      <input
+        type="hidden"
+        name="shop"
+        id="shop"
+        value="{{ shop.domain }}" />
+
+      <button type="submit">Submit</button>
+    </form>  {% endcomment %}
+<form class='reminder-form' method="post">
+      <div class='form-top'>
+          ReemindMe
+      </div>
+      <label for="datePicker">Select Date</label>
+      <input
+          type="date"
+          name="datePicker"
+          id="datePicker" />
+      <label for="email">Your email</label>
+      <input
+          type="email"
+          name="email"
+          id="customerEmail" />
+
+      <input
+          type="hidden"
+          name="productId"
+          id="productId"
+          value={{ product.id }} />
+
+      <input
+          type="hidden"
+          name="shop"
+          id="shop"
+          value={{ shop.domain }} />
+
+      <button type="submit" class="submit-btn">Submit</button>
+  </form>  
+  </template>
+</button>
+
+<input type="hidden" name="reemindme_merchant_shop" id="reemindme_merchant_shop" value={{ shop.domain }} />
+
+{% schema %}
+  {
+    "name": "Reemindme",
+    "target": "head",
+    "enabled_on": {
+      "templates": ["product"]
+    },
+    "stylesheet": "reemindme.css",
+    "javascript": "reemindme.js",
+    "settings": []
+  }
+{% endschema %}
